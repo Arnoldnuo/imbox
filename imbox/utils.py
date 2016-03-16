@@ -7,9 +7,11 @@ logger = logging.getLogger(__name__)
 if PY3:
     def str_encode(value='', encoding=None, errors='strict'):
         logger.debug("Encode str {} with and errors {}".format(value, encoding, errors))
+        errors = 'ignore'
         return str(value, encoding, errors)
 
     def str_decode(value='', encoding=None, errors='strict'):
+        errors = 'ignore'
         if isinstance(value, str):
             return bytes(value, encoding, errors).decode('utf-8')
         elif isinstance(value, bytes):
